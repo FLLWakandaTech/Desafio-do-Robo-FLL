@@ -149,57 +149,69 @@ async def main():
     await runloop.sleep_ms(500)
 
     await mover_em_linha_cm(20, 600)
-    await runloop.sleep_ms(1800)
+    time.sleep_ms(30)
 
-    curva_simples(20,7.5, 600) #Ajeita-se para ir até a missão 13
-    time.sleep(1)
+    curva_simples(-20,7.5, 600) #Ajeita-se para ir até a missão 13
+    time.sleep(0.3)
     motion_sensor.reset_yaw(0)
     time.sleep(0.2)
 
     await mover_em_linha_cm(60, 600) #Dirige-se até a missão 13
-    await runloop.sleep_ms(1800)
+    time.sleep_ms(30)
 
-    curva_simples(-113, 7.5, 600)
+    curva_simples(-83, 7.5, 600)
     time.sleep(1.3)
 
-    motor.run(port.D, -1000)
-    time.sleep(0.5)
-    motor.stop(port.D)
-    time.sleep(0.5)
-
-    await mover_em_linha_cm(18,800)#Aproxima-se da missão 13
-    time.sleep(0.4)
-
-    #Executa missão 13
     motor.run(port.D, 1000)
     time.sleep(0.5)
     motor.stop(port.D)
     time.sleep(0.5)
 
-    await mover_em_linha_cm(-25,800) #Sai da missão 13
+    await mover_em_linha_cm(13,800)#Aproxima-se da missão 13
+    time.sleep(0.7)
+
+    #Executa missão 13
+    motor.run(port.D, -800)
+    time.sleep(0.5)
+    motor.stop(port.D)
+    time.sleep(0.5)
+
+    curva_simples(20, 7.5, 600) #Ajeita-se para ir até a missão 10
+    time.sleep(0.3)
+    await mover_em_linha_cm(-17,800) #Sai da missão 13
     time.sleep(1)
 
-    curva_simples(130, 7.5, 600) #Ajeita-se para ir até a missão 10
+    curva_simples(65, 7.5, 600) #Ajeita-se para ir até a missão 10
     time.sleep(1.3)
 
-    await mover_em_linha_cm(35,800) #Dirige-se até a missão 10
+    await mover_em_linha_cm(40,800) #Dirige-se até a missão 10
     time.sleep(1)
 
+    curva_simples(10, 7.5, 600) #Ajeita-se para ir até a missão 10
+    time.sleep(0.5)
     #Executa primeira parte missão 10
+    motor.run(port.D, 700)
+    time.sleep(0.5)
+    motor.stop(port.D)
+    time.sleep(0.5)
+    
+    curva_simples(-20, 7.5, 600) #Ajeita-se para ir até a missão 10
+    time.sleep(0.3)
+
     motor.run(port.D, -1000)
     time.sleep(0.5)
     motor.stop(port.D)
     time.sleep(0.5)
 
-    await mover_em_linha_cm(-45,800) # Sai da missão
+
+    await mover_em_linha_cm(-30,800) # Sai da missão
     time.sleep(1)
-    
-    curva_simples(100, 7.5, 600)
+
+    curva_simples(50, 7.5, 600)
     time.sleep(1.3)
 
-    await mover_em_linha_cm(-45,800)#Dirige-se para base de lançamento e encerra saída
-    time.sleep(1)
+    await mover_em_linha_cm(70,800) # Sai da missão
+    time.sleep(1)   
+
 
 runloop.run(main())
-
-
