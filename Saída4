@@ -131,25 +131,22 @@ def curva_com_bitola(angulo, raio_cm, velocidade_externa, lado):
 # SEQUÊNCIA DE EXECUÇÃO
 # ------------------------
 async def main():
-    await mover_em_linha_cm(40.5, 1000)# Dirige-se até a missão 8
-    time.sleep(2.5)
-    curva_simples(5, 12.5, 300)
+    await mover_em_linha_cm(39, 1000)# Dirige-se até a missão 8
+    time.sleep(0.3)
+    curva_simples(5.5, 12.5, 300)
     time.sleep(0.8)# estabilização
     motion_sensor.reset_yaw(0)
-
+    time.sleep(0.1)
     # Execução da missão 8 #
     for sobe_desce in range(1, 5):
-        motor.run(port.D, -1000)
+        motor.run(port.D, 1000)
         time.sleep(0.5)
-        motor.stop(port.D)
-        time.sleep(0.5)
-        motor.run(port.D, 500)
-        time.sleep(0.25)
+        motor.run(port.D, -500)
+        time.sleep(0.7)
         sobe_desce
     motor.stop(port.D)
     time.sleep(2)
-    ##
-    curva_simples(12, -16, 300)
+    curva_simples(20, -7.5, 300)
     time.sleep(0.8)# estabilização
     motion_sensor.reset_yaw(0)
     time.sleep(0.2)
@@ -157,11 +154,11 @@ async def main():
     time.sleep(0.87)
     motor_pair.stop(motor_pair.PAIR_1)
     time.sleep(1)
-    curva_simples(34, -12.5, 600)# Vira se posicionando à missão 6
+    curva_simples(29, -12.5, 600)# Vira se posicionando à missão 6
     time.sleep(1)
     motion_sensor.reset_yaw(0)
     time.sleep(0.5)
-    curva_com_bitola(107,16,600,'esquerda') #Executa missões 6 e 5
+    curva_com_bitola(107,18,600,'esquerda') #Executa missões 6 e 5
     time.sleep(2.4)
 
     #Sai da missão
@@ -193,4 +190,3 @@ async def main():
 
 
 runloop.run(main())
-
