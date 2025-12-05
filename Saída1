@@ -156,11 +156,11 @@ async def main():
 
     await mover_em_linha_cm(-18, 400) #Executa segunda parte da missão 1
     time.sleep(0.3)
-    
+
     await mover_em_linha_cm(5, 400)
     time.sleep(0.3)
 
-   #Executa terceira parte da missão 1 
+#Executa terceira parte da missão 1
     motor.run(port.F, -200)
     time.sleep(1.1)
     motor.stop(port.F)
@@ -172,21 +172,21 @@ async def main():
     time.sleep(0.3)
     curva_com_bitola(105, 1,280, 'direita') #Executa primeira parte da missão 2
     time.sleep(2)
-    await mover_em_linha_cm(-13, 800) #Garante primeira parte da missão 2
+    await mover_em_linha_cm(-12, 800) #Garante primeira parte da missão 2
     time.sleep(1.3)
     await mover_em_linha_cm(25,800) #Dirige-se para missão 3
     time.sleep(0.3)
-    curva_com_bitola(13.5, 0, 600, 'direita')#Ajeita-se para missão 3
+    curva_com_bitola(8, 0, 600, 'direita')#Ajeita-se para missão 3
     time.sleep(1.5)
-    await mover_em_linha_cm(21,600) 
+    await mover_em_linha_cm(21,600) # AJEITA-SE À REALIZAÇÃO DE MISSÕES.
     time.sleep(0.3)
     await mover_em_linha_cm(25,400) #Executa missão 3
     time.sleep(0.3)
     await mover_em_linha_cm(-20,400)
     time.sleep(0.3)
-    await mover_em_linha_cm(-20,600)
+    await mover_em_linha_cm(-30,600)
     time.sleep(0.3)
-    curva_com_bitola(82, 0, 600, 'direita') #Direge-se para base de lançamento e encerra a saída
+    curva_com_bitola(85, 0, 600, 'direita') #Direge-se para base de lançamento e encerra a saída
     time.sleep(1.2)
     await mover_em_linha_cm(70,600)
     time.sleep(0.3)
