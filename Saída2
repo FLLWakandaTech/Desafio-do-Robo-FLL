@@ -149,7 +149,7 @@ async def main():
     motion_sensor.reset_yaw(0)
     await runloop.sleep_ms(500)
 
-    await mover_em_linha_cm(85, 500)#Dirige-se e executa primeira parte da missão 12 
+    await mover_em_linha_cm(85, 600)#Dirige-se e executa primeira parte da missão 12
     await runloop.sleep_ms(3600)
 
     curva_simples(30, 7.5, 300) #Correção para robô não prender na missão
